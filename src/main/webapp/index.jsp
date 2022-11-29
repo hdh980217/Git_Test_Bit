@@ -28,9 +28,9 @@
 	<tr><th>회원가입 기능</th><th>로그인 기능</th><th>게시판 기능</th>
 
   <tr>
-    <td> <a href="/firstView.jsp"><h2>회원가입 기능 링크</h2></a></td>
-    <td> <a href="/secondView.jsp"><h2>로그인 기능 링크</h2></a></td>
-    <td><a href="/thirdView.jsp"><h2>게시판 기능 링크</h2></a></td>
+    <td> <a href="adduser.jsp"><h2>회원가입 기능 링크</h2></a></td>
+    <td> <a href="firstView.jsp"><h2>로그인 기능 링크</h2></a></td>
+    <td><a href="thirdView.jsp"><h2>게시판 기능 링크</h2></a></td>
   </tr>
   
 </table>
