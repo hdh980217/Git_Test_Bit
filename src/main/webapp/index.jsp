@@ -24,6 +24,7 @@
 
 </head>
 <body>
+<table>
 	<tr><th>회원가입 기능</th><th>로그인 기능</th><th>게시판 기능</th>
 
   <tr>
@@ -31,6 +32,8 @@
     <td> <a href="/secondView.jsp"><h2>로그인 기능 링크</h2></a></td>
     <td><a href="/thirdView.jsp"><h2>게시판 기능 링크</h2></a></td>
   </tr>
+  
+</table>
 	
 </body>
 </html>
