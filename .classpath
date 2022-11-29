@@ -13,6 +13,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/BIT/eclipse-workspace/GitTestBit/mongo-java-driver-jdk11-3.12.2.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jdk-11.0.17/mongo-java-driver-jdk11-3.12.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
