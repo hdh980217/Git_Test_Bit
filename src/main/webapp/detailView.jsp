@@ -7,7 +7,6 @@
 <%@ page import="com.mongodb.client.MongoCursor" %>
 <%@ page import="com.mongodb.MongoClient" %>
 <%@ page import="java.rmi.UnknownHostException" %>
-<%@ page import="example.DAOClass" %>
 <%@ page import="java.util.Objects" %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
