@@ -22,9 +22,9 @@
     MongoCollection<Document> collection = mongoDb.getCollection(table);
     MongoCursor<Document> cursor = collection.find().iterator();
 
-    if(Objects.isNull(session)){
-        response.sendRedirect("/firstView.jsp");
-    }
+    //if(Objects.isNull(session.getAttribute("name"))){
+      //  response.sendRedirect("firstView.jsp");
+    //}
 
 %>
 <title>CSS</title>
@@ -47,21 +47,21 @@
 <body>
 <table>
 
-    <tr><th>제목</th><th>작성자</th><th>삭제</th>
+    <tr><th>제목</th><th>작성자</th>
             <%
 		while (cursor.hasNext()){
           Document doc = cursor.next();
 			%>
     <tr>
-    <td> <a href="/detailView.jsp?name=<%=doc.get("title")%>"><h2><%=doc.getString("title")%>></h2></a></td>
-        <td> <h2><%=doc.getString("name")%>>/td>
-        <td> <a href="/delete.jsp?name=<%=doc.get("title")%>"><h2>삭제</h2></a></td>
+    <td> <a href="detailView.jsp?title=<%=doc.get("title")%>"><h2><%=doc.getString("title")%></h2></a></td>
+        <td> <h2><%=doc.getString("name")%></td>
     </tr>
     <%
         }
     %>
 
-    <a href="/index.jsp"><h2>홈으로</h2></a>
+    <a href="index.jsp"><h2>홈으로</h2></a>
+    <a href="addBoard.jsp"><h2>게시글 작성</h2></a>
 </table>
 </body>
 </html>

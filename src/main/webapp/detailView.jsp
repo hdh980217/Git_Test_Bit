@@ -1,3 +1,4 @@
+<%@page import="com.mongodb.BasicDBObject"%>
 <%@ page import="java.util.List" %>
 
 <%@ page import="com.mongodb.client.MongoClients" %>
@@ -16,16 +17,24 @@
 
     String db = "db01";
     String table = "board";
+    String title = (String) request.getParameter("title");
     MongoClient mongoClient = new MongoClient();
     MongoDatabase mongoDb = mongoClient.getDatabase(db);
     MongoCollection<Document> collection = mongoDb.getCollection(table);
-    MongoCursor<Document> cursor = collection.find().iterator();
-    String title = (String) request.getParameter("title");
-    Document doc = new Document("name",title);
+    
+	BasicDBObject query = new BasicDBObject("title", title);
 
+    MongoCursor<Document> cursor = collection.find(query).iterator();
+    String content = null;
+    String name = null;
+    while (cursor.hasNext()) {
+ 		Document doc = cursor.next();
+ 		content = doc.getString("content");
+ 		name = doc.getString("name");
+ 	}	
 
     if(Objects.isNull(session)){
-        response.sendRedirect("/firstView.jsp");
+        response.sendRedirect("firstView.jsp");
     }
 
 %>
@@ -51,17 +60,17 @@
 
     <tr><th>제목</th><th>작성자</th>
     <tr>
-        <td><%=doc.getString("title")%> </td>
-        <td><%=doc.getString("name")%> </td>
+        <td><%=title%> </td>
+        <td><%=name%> </td>
     </tr>
     <tr>
         <th>내용</th>
     </tr>
     <tr>
-        <td><%=doc.getString("content")%> </td>
+        <td><%=content%> </td>
     </tr>
 
-    <a href="/index.jsp"><h2>홈으로</h2></a>
+    <a href="thirdView.jsp"><h2>목록으로</h2></a>
 </table>
 </body>
 </html>

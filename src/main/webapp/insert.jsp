@@ -1,7 +1,7 @@
 <%@page import="org.bson.Document"%>
 <%@page import="com.mongodb.client.MongoCollection"%>
 <%@page import="com.mongodb.client.MongoDatabase"%>
-S<%@page import="com.mongodb.MongoClient"%>
+<%@page import="com.mongodb.MongoClient"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>

@@ -23,7 +23,7 @@ To change this template use File | Settings | File Templates.
             .append("title",title)
             .append("content",content);
     collection.insertOne(document);
-    response.sendRedirect("/thirdView.jsp");
+    response.sendRedirect("thirdView.jsp");
 %>
 <html>
 <head>

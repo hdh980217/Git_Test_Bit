@@ -15,7 +15,7 @@
 <body>
 <div class="container">
     <h2>게시판 등록</h2>
-    <form id="forms" name="forms" method="post" action="/boardRequest.jsp">
+    <form id="forms" name="forms" method="post" action="boardRequest.jsp">
         <table class="board_detail">
             <tr>
                 <td>제목</td>
