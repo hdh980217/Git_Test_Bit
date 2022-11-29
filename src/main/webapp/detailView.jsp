@@ -18,10 +18,12 @@
     String db = "db01";
     String table = "board";
     MongoClient mongoClient = new MongoClient();
-    System.out.println(Objects.isNull(mongoClient));
     MongoDatabase mongoDb = mongoClient.getDatabase(db);
     MongoCollection<Document> collection = mongoDb.getCollection(table);
     MongoCursor<Document> cursor = collection.find().iterator();
+    String title = (String) request.getParameter("title");
+    Document doc = new Document("name",title);
+
 
     if(Objects.isNull(session)){
         response.sendRedirect("/firstView.jsp");
@@ -36,7 +38,7 @@
         border-collapse: collapse;
     }
     th, td {
-        background-color: cornflowerblue;
+        background-color: lemonchiffon;
         border: 1px solid #444444;
         padding: 10px;
     }
@@ -48,19 +50,17 @@
 <body>
 <table>
 
-    <tr><th>제목</th><th>작성자</th><th>삭제</th>
-            <%
-		while (cursor.hasNext()){
-          Document doc = cursor.next();
-			%>
+    <tr><th>제목</th><th>작성자</th>
     <tr>
-    <td> <a href="/detailView.jsp?name=<%=doc.get("title")%>"><h2><%=doc.getString("title")%>></h2></a></td>
-        <td> <h2><%=doc.getString("name")%>>/td>
-        <td> <a href="/delete.jsp?name=<%=doc.get("title")%>"><h2>삭제</h2></a></td>
+        <td><%=doc.getString("title")%> </td>
+        <td><%=doc.getString("name")%> </td>
     </tr>
-    <%
-        }
-    %>
+    <tr>
+        <th>내용</th>
+    </tr>
+    <tr>
+        <td><%=doc.getString("content")%> </td>
+    </tr>
 
     <a href="/index.jsp"><h2>홈으로</h2></a>
 </table>
