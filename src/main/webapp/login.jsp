@@ -1,3 +1,6 @@
+<%@page import="com.mongodb.client.MongoCursor"%>
+<%@page import="com.mongodb.client.MongoCollection"%>
+<%@page import="com.mongodb.client.MongoDatabase"%>
 <%@ page import="com.mongodb.MongoClient" %>
 <%@ page import="com.mongodb.DB" %>
 <%@ page import="com.mongodb.DBCollection" %>
@@ -19,25 +22,32 @@
 	String id = request.getParameter("id");
 	String pw = request.getParameter("pw");
 	
-	MongoClient mongo = new MongoClient("localhost", 27017);
-	DB db = mongo.getDB("db");
-	DBCollection table = db.getCollection("user");
+	MongoClient client = new MongoClient("localhost", 27017);
+	MongoDatabase db = client.getDatabase("db01");
+	MongoCollection<Document> collection = db.getCollection("user");
 	
 	BasicDBObject query = new BasicDBObject("id", id);
-	DBCursor cursor = table.find(query);
-	cursor.hasNext();
-	Document doc = (Document) cursor.next();
 	
-	String name = doc.getString("name");
 	
-	if(pw.equals(doc.get("pw"))) {
-		session.setAttribute("userName",name);
-		System.out.println("로그인 성공");
-		response.sendRedirect("index.jsp");
-	}else {
-		System.out.println("로그인 실패");
-		response.sendRedirect("firstView.jsp");
-	}
+	MongoCursor<Document> cursor = collection.find(query).iterator();
+ 	
+	while (cursor.hasNext()) {
+	 		Document doc = cursor.next();
+	 		String name = doc.getString("name");
+	 		
+	 		if(pw.equals(doc.get("pw"))) {
+	 			session.setAttribute("userName",name);
+	 			
+	 			out.println("<h1>로그인 성공</h1>");
+	 			out.println("<a href='index.jsp'>처음으로</a>");
+	 		}else {
+	 			out.println("<h1>로그인 실패</h1>");
+	 			out.println("<a href='index.jsp'>처음으로</a>");
+	 		}
+     }	
+	
+	client.close();
+	
 %>
 </body>
 </html>
