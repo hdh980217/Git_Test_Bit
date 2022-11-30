@@ -58,9 +58,14 @@
 <body>
 <table>
 
-    <tr><th>제목</th><th>작성자</th>
+    <tr><th>제목</th>
+    <tr>
     <tr>
         <td><%=title%> </td>
+    </tr>
+     <tr><th>작성자</th>
+    </tr>
+        <tr>
         <td><%=name%> </td>
     </tr>
     <tr>
